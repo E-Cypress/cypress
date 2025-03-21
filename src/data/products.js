@@ -2,21 +2,21 @@
 const produtos = [
     {
       id: 1,
-      name: "Árvore Cipreste Italiano",
+      name: "Árvore Cypress Italiano",
       price: 59.99,
       image: "https://cdn.mos.cms.futurecdn.net/Gvq3eSwgxy8L7EZ4nDH7KG.jpg",
       description: "Árvore perene alta e colunar, perfeita para criar telas de privacidade elegantes"
     },
     {
       id: 2,
-      name: "Árvore Cipreste de Leyland",
+      name: "Árvore Cypress de Leyland",
       price: 49.99,
       image: "https://familiabim.com.br/image/cache/catalog/colaborador/Leyland%20Cypress-1000x1000.jpg",
       description: "Cipreste híbrido de crescimento rápido, ideal para quebra-ventos e cercas vivas"
     },
     {
       id: 3,
-      name: "Árvore Cipreste Calvo",
+      name: "Árvore Cypress Calvo",
       price: 79.99,
       image: "https://shop-static.arborday.org/media/0005495_baldcypress_510.jpeg",
       description: "Conífera decídua distintiva que prospera em condições úmidas"
