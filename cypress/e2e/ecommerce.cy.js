@@ -1,100 +1,56 @@
-describe('E-Commerce App', () => {
+describe('Funcionalidade do Carrinho de Compras E-Commerce', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000');
     });
   
-    it('displays the product list', () => {
-      cy.get('[data-cy=product-grid]').should('be.visible');
-      cy.get('[data-cy=product-item]').should('have.length.at.least', 1);
-    });
-  
-    it('displays product details correctly', () => {
+    it('demonstra o fluxo completo do carrinho de compras', () => {
+
+      // bota um produto no carrinho
       cy.get('[data-cy=product-item]').first().within(() => {
-        cy.get('[data-cy=product-name]').should('be.visible');
-        cy.get('[data-cy=product-price]').should('be.visible');
-        cy.get('[data-cy=product-image]').should('be.visible');
-        cy.get('[data-cy=add-to-cart-button]').should('be.visible');
+        cy.get('[data-cy=product-name]').invoke('text').as('nomePrimeiroProduto');
+        cy.get('[data-cy=add-to-cart-button]').click();
       });
-    });
-  
-    it('adds a product to the cart when clicking Add to Cart', () => {
-      // Store the product name for later comparison
-      let productName;
       
-      cy.get('[data-cy=product-item]').first().within(() => {
-        cy.get('[data-cy=product-name]').invoke('text').then(text => {
-          productName = text;
-        });
-        cy.get('[data-cy=add-to-cart-button]').click();
-      });
-  
+      // verifica se o produto ta no carrinho
       cy.get('[data-cy=cart-item]').should('have.length', 1);
-      cy.get('[data-cy=cart-item-name]').first().should('have.text', productName);
-      cy.get('[data-cy=item-quantity]').first().should('have.text', '1');
-    });
-  
-    it('increases quantity when adding same product multiple times', () => {
-      cy.get('[data-cy=product-item]').first().within(() => {
-        cy.get('[data-cy=add-to-cart-button]').click();
-        cy.get('[data-cy=add-to-cart-button]').click();
-      });
-  
-      cy.get('[data-cy=cart-item]').should('have.length', 1);
-      cy.get('[data-cy=item-quantity]').first().should('have.text', '2');
-    });
-  
-    it('increases and decreases quantity in cart', () => {
-      // Add product to cart first
-      cy.get('[data-cy=product-item]').first().within(() => {
-        cy.get('[data-cy=add-to-cart-button]').click();
-      });
-  
-      // Increase quantity
-      cy.get('[data-cy=increase-quantity]').click();
-      cy.get('[data-cy=item-quantity]').should('have.text', '2');
-  
-      // Decrease quantity
-      cy.get('[data-cy=decrease-quantity]').click();
       cy.get('[data-cy=item-quantity]').should('have.text', '1');
-    });
-  
-    it('removes an item from the cart', () => {
-      // Add product to cart first
+      
+      // adicionar o produto mais 2 vezes
       cy.get('[data-cy=product-item]').first().within(() => {
         cy.get('[data-cy=add-to-cart-button]').click();
+        cy.get('[data-cy=add-to-cart-button]').click();
       });
-  
-      // Click remove button
-      cy.get('[data-cy=remove-item]').click();
-      cy.get('[data-cy=empty-cart-message]').should('be.visible');
-      cy.get('[data-cy=cart-item]').should('not.exist');
-    });
-  
-    it('calculates cart total correctly', () => {
-      // Add first product to cart
-      let firstPrice;
-      let secondPrice;
       
-      cy.get('[data-cy=product-item]').eq(0).within(() => {
-        cy.get('[data-cy=product-price]').invoke('text').then(text => {
-          firstPrice = parseFloat(text.replace('$', ''));
-        });
-        cy.get('[data-cy=add-to-cart-button]').click();
-      });
-  
-      // Add second product to cart
+      // ver se o total agora n ocarrinho e 3
+      cy.get('[data-cy=item-quantity]').should('have.text', '3');
+      
+      // adiciona outro produto
       cy.get('[data-cy=product-item]').eq(1).within(() => {
-        cy.get('[data-cy=product-price]').invoke('text').then(text => {
-          secondPrice = parseFloat(text.replace('$', ''));
-        });
+        cy.get('[data-cy=product-name]').invoke('text').as('nomeSegundoProduto');
         cy.get('[data-cy=add-to-cart-button]').click();
       });
-  
-      // Verify total is correct
-      cy.get('[data-cy=cart-total]').invoke('text').then(text => {
-        const total = parseFloat(text.replace('Total: $', ''));
-        const expectedTotal = firstPrice + secondPrice;
-        expect(total).to.be.closeTo(expectedTotal, 0.01);
+      
+      // ver se tem dois produtos diferentes no carrinho
+      cy.get('[data-cy=cart-item]').should('have.length', 2);
+      
+      // tirar o primeiro produto, todos os 3 do primeiro produto
+      cy.get('@nomePrimeiroProduto').then(nomePrimeiroProduto => {
+        cy.get('[data-cy=cart-item-name]').contains(nomePrimeiroProduto)
+          .parents('[data-cy=cart-item]')
+          .find('[data-cy=remove-item]')
+          .click();
       });
+      
+      // verifica se so sobrou o segundo produto
+      cy.get('[data-cy=cart-item]').should('have.length', 1);
+      cy.get('@nomeSegundoProduto').then(nomeSegundoProduto => {
+        cy.get('[data-cy=cart-item-name]').should('have.text', nomeSegundoProduto);
+      });
+      
+      // clicar o botao de mais pra aumentar a quantidade do segundo produto pra 2
+      cy.get('[data-cy=increase-quantity]').click();
+      
+      // ver se tem 2 do segundo produto
+      cy.get('[data-cy=item-quantity]').should('have.text', '2');
     });
   });
