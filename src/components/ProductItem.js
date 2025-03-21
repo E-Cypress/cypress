@@ -17,7 +17,7 @@ const ProductItem = ({ product, addToCart }) => {
         onClick={() => addToCart(product)}
         data-cy="add-to-cart-button"
       >
-        Add to Cart
+        Adicionar ao Carrinho
       </button>
     </div>
   );
