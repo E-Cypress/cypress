@@ -10,7 +10,7 @@ const CartItem = ({ item, updateQuantity, removeFromCart }) => {
       />
       <div className="cart-item-details">
         <h4 className="cart-item-title" data-cy="cart-item-name">{item.name}</h4>
-        <p className="cart-item-price" data-cy="cart-item-price">${item.price.toFixed(2)}</p>
+        <p className="cart-item-price" data-cy="cart-item-price">R${item.price.toFixed(2)}</p>
         <div className="cart-item-actions">
           <button 
             className="qty-btn"
@@ -33,7 +33,7 @@ const CartItem = ({ item, updateQuantity, removeFromCart }) => {
             onClick={() => removeFromCart(item.id)}
             data-cy="remove-item"
           >
-            Remove
+            Remover
           </button>
         </div>
       </div>
