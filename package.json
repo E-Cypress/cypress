@@ -2,7 +2,7 @@
   "name": "cypress",
   "version": "0.2.0",
   "private": true,
-  "homepage": "https://github.com/E-Cypress/cypress",
+  "homepage": "https://e-cypress.github.io/cypress/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
