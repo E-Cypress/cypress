@@ -10,7 +10,7 @@ const ProductItem = ({ product, addToCart }) => {
         data-cy="product-image"
       />
       <h3 className="product-title" data-cy="product-name">{product.name}</h3>
-      <p className="product-price" data-cy="product-price">${product.price.toFixed(2)}</p>
+      <p className="product-price" data-cy="product-price">R${product.price.toFixed(2)}</p>
       <p>{product.description}</p>
       <button 
         className="add-to-cart-btn" 
