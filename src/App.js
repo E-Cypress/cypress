@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="app-container">
       <header>
-        <h1>Simple E-Commerce Store</h1>
+        <h1>Loja de Cypress</h1>
       </header>
       <div className="main-content">
         <ProductList products={products} addToCart={addToCart} />
