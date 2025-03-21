@@ -4,7 +4,7 @@ import ProductItem from './ProductItem';
 const ProductList = ({ products, addToCart }) => {
   return (
     <div className="product-section">
-      <h2>Products</h2>
+      <h2>Produtos</h2>
       <div className="product-grid" data-cy="product-grid">
         {products.map(product => (
           <ProductItem 
