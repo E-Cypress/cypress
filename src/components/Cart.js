@@ -10,9 +10,9 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
 
   return (
     <div className="cart-section" data-cy="cart-container">
-      <h2>Shopping Cart</h2>
+      <h2>Carrinho</h2>
       {cartItems.length === 0 ? (
-        <p data-cy="empty-cart-message">Your cart is empty</p>
+        <p data-cy="empty-cart-message">Seu carrinho esta vazio</p>
       ) : (
         <>
           {cartItems.map(item => (
@@ -24,7 +24,7 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
             />
           ))}
           <div className="cart-total" data-cy="cart-total">
-            Total: ${calculateTotal().toFixed(2)}
+            Total: R${calculateTotal().toFixed(2)}
           </div>
         </>
       )}
