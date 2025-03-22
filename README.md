@@ -1,10 +1,24 @@
-# video no youtube com a explicacao
-https://youtu.be/rFZ8J9YltWU
+# Nossos slides:
+#### https://www.canva.com/design/DAGiUZJKMvs/l4ff1vmbTiHxBqymiUM-0g/edit?utm_content=DAGiUZJKMvs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-# como rodar:
-- clona
-- ```npm i```
+-------
+## Para rodar:
+- Clone o repositorio
+- Instale as dependencias pelo terminal com o comando:
 
-### ai vc abre dois terminais
-- ```npm start``` (esse roda o site)
-- ```npx cypress open``` (esse roda o cypress)
+```cmd
+npm i
+```
+
+- Abra dois terminais e rode os seguintes comandos:
+
+
+_(esse roda o site localmente em http://localhost:3000/)_
+```cmd
+npm start
+```
+
+_(esse roda a interface do cypress)_
+```cmd
+npx cypress open
+```
