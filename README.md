@@ -22,3 +22,13 @@ _(esse roda a interface do cypress)_
 ```cmd
 npx cypress open
 ```
+
+
+-----
+-----
+-----
+
+
+# Essa apresentação é um oferecimento: SpiceCode CLI
+# https://github.com/spiceCodeCLI
+![new-wallpaper-compressed](https://github.com/user-attachments/assets/e79ca230-6b75-436b-87b5-297de249871b)
