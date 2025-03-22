@@ -1,5 +1,5 @@
-# Nossos slides:
-#### https://www.canva.com/design/DAGiUZJKMvs/l4ff1vmbTiHxBqymiUM-0g/edit?utm_content=DAGiUZJKMvs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+# Nossos slides: 
+#### https://www.canva.com/design/DAGiUZJKMvs/l4ff1vmbTiHxBqymiUM-0g/edit
 
 -------
 ## Para rodar:
